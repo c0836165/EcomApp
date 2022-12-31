@@ -54,7 +54,7 @@ const BoughtProducts = () => {
             bg={Colors.gray}
             py={5}
             px={2}>
-            <Text fontSize={16} color={Colors.black} isTruncated bold="true">
+            <Text fontSize={14} color={Colors.black} isTruncated bold="true">
                 Order By- {item.placedBy}
             </Text>
             <HStack
@@ -62,15 +62,19 @@ const BoughtProducts = () => {
                 justifyContent="space-between"
                 alignItems="center"
             >
-                <Text fontSize={14} color={Colors.blue} isTruncated>
+                <View>
+                <Text fontSize={12} color={Colors.blue} isTruncated>
                     {item.oId}
                 </Text>
-                <Text fontSize={12} bold color={Colors.black} isTruncated>
-                    {item.status}
-                </Text>
-                <Text fontSize={11} italic color={Colors.black} isTruncated>
+                <Text fontSize={10} italic color={Colors.black} isTruncated>
                     {new Date(item.oId).toLocaleDateString()}
                 </Text>
+
+                </View>
+                <Text fontSize={11} bold color={Colors.black} isTruncated>
+                    {item.status}
+                </Text>
+                
                 <Button
                     px={7}
                     py={1.5}

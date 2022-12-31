@@ -165,14 +165,24 @@ function HomeScreen() {
               <FlatList
                 contentContainerStyle={{ alignSelf: 'flex-start' }}
                 numColumns={2}
-                
                 data={products}
+                style={styles.flatlist}
                 renderItem={renderItem}
                 keyExtractor={item => item.pId}
               ></FlatList>
           </View>
               :
-              <Text style={styles.text}>No products exists matching your searched criteria!!! </Text>)}
+              <View>
+              <TextInput 
+                  style = {styles.textBoxes}
+                  value={query}
+                  onChangeText={text => onSearchTextChanged(text)}
+                  placeholder="Enter category name to find products"
+               />
+              <Text style={styles.text}>No products exists matching your searched criteria!!! </Text>
+              </View>
+              
+              )}
        
        
        
@@ -285,6 +295,9 @@ const styles = StyleSheet.create({
     logo:{
       flexDirection:'row',
       alignItems:'center',
+    },
+    flatlist:{
+      height:'100%',
     },
   
 });

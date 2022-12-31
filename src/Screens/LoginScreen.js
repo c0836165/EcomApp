@@ -14,6 +14,7 @@ import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from 'firebase/database';
+import {StyleSheet} from 'react-native';
 
 function LoginScreen({ navigation }) {
   const firebaseConfig = {
@@ -68,15 +69,7 @@ function LoginScreen({ navigation }) {
   }
 
   return (
-    <Box flex={1} bg={Colors.black}>
-      <Image
-        flex={1}
-        alt="Logo"
-        resizeMode="cover"
-        size="lg"
-        w="full"
-        source={require("../../assets/cover.png")}
-      />
+    <Box flex={1} bg={Colors.white}>
       <Box
         w="full"
         h="full"
@@ -85,8 +78,15 @@ function LoginScreen({ navigation }) {
         px="6"
         justifyContent="center"
       >
-        <Heading>LOGIN</Heading>
-        <VStack space={5} pt="6">
+        <Image
+        style={styles.logo}
+        alt="Logo"
+        resizeMode="cover"
+        
+        source={require("../../assets/images/cover.gif")}
+      />
+        
+        <VStack style={styles.logininfo} space={5} pt="6">
           <Input
             InputLeftElement={
               <MaterialIcons name="email" size={20} color={Colors.main} />
@@ -127,11 +127,12 @@ function LoginScreen({ navigation }) {
           rounded={50}
           bg={Colors.main}
           onPress={() => handleLogin()}
+          style={styles.logBtn}
         >
           LOGIN
         </Button>
         <Pressable mt={4} onPress={() => handleSignUp()}>
-          <Text color={Colors.deepestGray}>SIGN UP</Text>
+          <Text color={"blue.900"}>SIGN UP</Text>
         </Pressable>
       </Box>
     </Box>
@@ -139,3 +140,17 @@ function LoginScreen({ navigation }) {
 }
 
 export default LoginScreen;
+
+const styles = StyleSheet.create({
+ logo:{
+    height:"15%",
+ },
+ logininfo:{
+    alignItems:'center',
+ },
+ logBtn:{
+  alignSelf:'center',
+ }
+  
+});
+

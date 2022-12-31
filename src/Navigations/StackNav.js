@@ -8,9 +8,19 @@ import PlaceOrderScreen from "../Screens/PlaceOrderScreen";
 import BoughtProducts from "../Screens/BoughtProducts";
 import ProductSaleStatus from "../Screens/ProductSaleStatus";
 import UserProfile from "../Screens/UserProfile";
+import { Button } from "react-native";
+import { getAuth } from "firebase/auth";
 
 const Stack = createNativeStackNavigator();
-const StackNav = () => {
+const StackNav = ({navigation}) => {
+
+  const logout = () => {
+    getAuth().signOut().then(() => {
+      navigation.replace("Login");
+    }).catch(error => { alert(error.message) });
+  }
+  
+
   return (
     <Stack.Navigator
       initialRouteName="Home"
@@ -27,6 +37,13 @@ const StackNav = () => {
       <Stack.Screen name="ProductSaleStatus" component={ProductSaleStatus} />
       <Stack.Screen name="UserProfile" component={UserProfile}
             options={{
+              headerRight: () => (
+                <Button
+                  onPress={() => logout()}
+                  title="Logout"
+                  color='red'
+                />
+              ),
               headerShown: true,
               title: 'User Profile',
               headerStyle: {

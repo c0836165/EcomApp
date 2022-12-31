@@ -37,6 +37,7 @@ useEffect(() => {
     }
 }, [focus]);
 
+
  
   
 
@@ -71,6 +72,9 @@ useEffect(() => {
         if(ProjectData.email === getAuth().currentUser?.email){
             setPImage(ProjectData.userProfile);
             setId(ProjectData.userId);
+            setUserFName(ProjectData.userFname);
+            setUserLName(ProjectData.userLname);
+            setMobileNo(ProjectData.userMobile);
             console.log(id);
           }
         });

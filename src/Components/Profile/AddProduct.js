@@ -23,7 +23,7 @@ const AddProduct = () => {
       let result = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
         quality: 0.5,
-        aspect: [5, 4],
+        aspect: [3,2],
         
         
       });

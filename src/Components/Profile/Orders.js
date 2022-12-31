@@ -44,14 +44,17 @@ const Orders = () => {
       py={5}
       px={2}
     >
-      <Text fontSize={10} color={Colors.blue} isTruncated>
-        {item.oId}
-      </Text>
-      <Text fontSize={12} bold color={Colors.black} isTruncated>
+      <View>
+          <Text fontSize={12} color={Colors.blue} isTruncated>
+            {item.oId}
+          </Text>
+          <Text fontSize={11} color={Colors.black} isTruncated>
+          {new Date(item.oId).toLocaleDateString()}
+          </Text>
+    </View>
+      
+      <Text fontSize={11} italic bold color={Colors.black} isTruncated>
         {item.status}
-      </Text>
-      <Text fontSize={11} italic color={Colors.black} isTruncated>
-        {new Date(item.oId).toLocaleDateString()}
       </Text>
       <Button
         px={7}
