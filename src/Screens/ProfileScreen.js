@@ -7,18 +7,19 @@ import { Button, Pressable, View ,StyleSheet} from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import { getDatabase, ref, onValue , update, set } from 'firebase/database';
 import { useIsFocused } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import {
+  Menu,
+  MenuProvider,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+ } from "react-native-popup-menu";
 
-// import { createDrawerNavigator } from "@react-navigation/drawer";
-// import Orders from "../Components/Profile/Orders";
-// import AddProduct from "../Components/Profile/AddProduct";
-// import MyProducts from "../Components/Profile/MyProducts";
-// import ManageOrders from "../Components/Profile/ManageOrders";
-
-// const Drawer = createDrawerNavigator();
 
 function ProfileScreen({ navigation }) {
 
-  const [isAdmin , setIsAdmin] = useState(true);
 
   const [id , setId] = useState("");
   const userName = useState(getAuth().currentUser?.email);
@@ -32,18 +33,7 @@ function ProfileScreen({ navigation }) {
     }
 }, [focus]);
 
-  
-
-
-      
-    
-
-
-
- 
-
-
-  const pickImageAsync = async () => {
+const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       quality: 0.5,
@@ -110,39 +100,6 @@ function ProfileScreen({ navigation }) {
 
   return (
     <>
-      <Center bg={Colors.main} pt={10} pb={6}>
-       
-       
-      <View style={styles.avatarContainer} >
-      <Pressable onPress={()=>pickImageAsync()}>
-        <Image
-          source={{
-            uri: pImage,
-          }}
-          alt="profile"
-          style={styles.productIMG}
-          resizeMode="cover"
-        />
-        </Pressable>
-        </View>
-        
-       
-   
-       
-        <Heading bold fontSize={15} isTruncated my={2} color={Colors.white}>
-         {userName}
-        </Heading>
-        <Button
-          onPress={() => setUserProfile()}
-          title="Save Profile"
-          color={Colors.red}
-        />
-        <Button
-          onPress={() => logout()}
-          title="Logout"
-          color={Colors.red}
-        />
-      </Center>
       <Tabs />
     </>
   );

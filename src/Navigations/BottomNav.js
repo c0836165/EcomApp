@@ -5,7 +5,6 @@ import { Center, Pressable } from "native-base";
 import {
   Entypo,
   AntDesign,
-  FontAwesome,
   FontAwesome5,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
@@ -13,6 +12,8 @@ import Colors from "../color";
 import ProfileScreen from "../Screens/ProfileScreen";
 import CartScreen from "../Screens/CartScreen";
 import StackNav from "./StackNav";
+import { Feather } from '@expo/vector-icons'; 
+
 
 
 const Tab = createBottomTabNavigator();
@@ -87,12 +88,22 @@ const BottomNav = () => {
           tabBarIcon: ({ focused }) => (
             <Center>
               {focused ? (
-                <FontAwesome name="user" size={24} color={Colors.main} />
+                <FontAwesome5 name="file-alt" size={24} color={Colors.main} />
               ) : (
-                <AntDesign name="user" size={24} color={Colors.black} />
+                <Feather name="file" size={24} color="black" />
               )}
             </Center>
           ),
+            headerShown: true,
+            title: 'Product Details',
+            headerStyle: {
+              backgroundColor:'#ADD8E6' ,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+         
         }}
       />
     </Tab.Navigator>
